@@ -1,42 +1,27 @@
 package ca.sait.lab7.dataaccess;
 
-import ca.sait.lab7.models.Role;
-import ca.sait.lab7.models.User;
+import ca.sait.lab7.models.generated.Role;
+import ca.sait.lab7.models.generated.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 
 public class RoleDB {
 
     public List<Role> getAll() throws Exception {
-        List<Role> roles = new ArrayList<>();
-        ConnectionPool cp = ConnectionPool.getInstance();
-        Connection con = cp.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        
-        String sql = "SELECT * FROM role";
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
         
         try {
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt(1);
-                String name = rs.getString(2);
-                
-                Role role = new Role(id, name);   
-                roles.add(role);
-            }
+            Query query = em.createNamedQuery("Role.findAll");
+            return query.getResultList();
         } finally {
-            DBUtil.closeResultSet(rs);
-            DBUtil.closePreparedStatement(ps);
-            cp.freeConnection(con);
+            em.close();
         }
-
-        return roles;
     }
 
 }

@@ -1,11 +1,12 @@
 package ca.sait.lab7.models;
 
 import java.io.Serializable;
-
+import javax.persistence.*;
 /**
  * Represent a Role
  * @author Bibek Regmi
  */
+
 public class Role implements Serializable {
     private int role_id;
     private String role_name;
