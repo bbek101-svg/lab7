@@ -1,4 +1,4 @@
-package ca.sait.lab6.models;
+package ca.sait.lab7.models;
 
 import java.io.Serializable;
 
