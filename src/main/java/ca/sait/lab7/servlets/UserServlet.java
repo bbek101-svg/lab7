@@ -1,8 +1,8 @@
 
 package ca.sait.lab7.servlets;
 
-import ca.sait.lab7.models.Role;
-import ca.sait.lab7.models.User;
+import ca.sait.lab7.models.generated.Role;
+import ca.sait.lab7.models.generated.User;
 import ca.sait.lab7.services.RoleService;
 import ca.sait.lab7.services.UserService;
 import java.io.IOException;
@@ -52,7 +52,7 @@ public class UserServlet extends HttpServlet {
                 request.setAttribute("password", user.getPassword());
                 request.setAttribute("fname", user.getFirstName());
                 request.setAttribute("lname", user.getLastName());
-                request.setAttribute("roles", user.getRole().getName());
+                request.setAttribute("roles", user.getRole().getRoleName());
                 
                 
             } catch (Exception ex) {
@@ -104,8 +104,8 @@ public class UserServlet extends HttpServlet {
                 Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
               for(Role rol: roles){
-                  if((rol.getName()).equals(role)){
-                      ro = new Role(rol.getId(), role);
+                  if((rol.getRoleName()).equals(role)){
+                      ro = new Role(rol.getRoleId(), role);
                   }
               }
               boolean isActive;
@@ -135,8 +135,8 @@ public class UserServlet extends HttpServlet {
                 Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
               for(Role rol: roles){
-                  if((rol.getName()).equals(roleName)){
-                      ro = new Role(rol.getId(), roleName);
+                  if((rol.getRoleName()).equals(roleName)){
+                      ro = new Role(rol.getRoleId(), roleName);
                   }
               }
               

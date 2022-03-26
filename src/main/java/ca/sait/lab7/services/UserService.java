@@ -2,8 +2,8 @@ package ca.sait.lab7.services;
 
 
 import ca.sait.lab7.dataaccess.UserDB;
-import ca.sait.lab7.models.Role;
-import ca.sait.lab7.models.User;
+import ca.sait.lab7.models.generated.Role;
+import ca.sait.lab7.models.generated.User;
 import java.util.List;
 
 

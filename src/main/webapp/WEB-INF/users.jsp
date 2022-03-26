@@ -54,7 +54,7 @@
                                     <td>${user.getEmail()}</td>
                                     <td>${user.firstName}</td>
                                     <td>${user.lastName}</td>
-                                    <td>${user.getRole().getName()}</td>
+                                    <td>${user.getRole().getRoleName()}</td>
                                     <td>
                                     <a href="user?edit=${user.email}">Edit</a>
                                      <a href="user?delete=${user.email}">Delete</a>
